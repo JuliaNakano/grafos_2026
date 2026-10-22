@@ -1,0 +1,16 @@
+CC     = gcc
+CFLAGS = -std=c99 -Wall -Wextra -pedantic -g
+
+all: main_grafo teste_grafo
+
+main_grafo: main_grafo.c grafo.c grafo.h caminho.c caminho.h
+	$(CC) $(CFLAGS) -o $@ main_grafo.c grafo.c caminho.c
+
+teste_grafo: teste_grafo.c grafo.c grafo.h caminho.c caminho.h
+	$(CC) $(CFLAGS) -o $@ teste_grafo.c grafo.c caminho.c
+
+test: teste_grafo
+	./teste_grafo
+
+clean:
+	rm -f main_grafo teste_grafo *.o tmp_*.txt
